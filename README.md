@@ -1,1 +1,125 @@
-# spoota-internship-roadmap
+ - Week 01
+	 - General
+		 - Working on Social Profiles
+			 - GitHub
+			 - LinkedIn
+			 - Stackoverflow
+		 - Basic Concepts
+			 - What is Version Control
+			 - What is .NET
+			 - What is C#
+			 - What is ASP.NET
+			 - What is Database
+			 - What is SQL Server
+		 - Other Concepts
+			 - What is Software architecture
+			 - What is Client/Server
+			 - What is HTTP
+			 - What is TCP/IP
+			 - What is REST
+ - Week 02
+	 - ASP.NET Core Web API
+		 - Your first Web API
+		 - Routing & Endpoints
+		 - Middleware
+		 - Authentication & Authorization
+		 - Error Handling
+		 - Filters & Attributes
+		 - Swagger/Postman/...
+ - Week 03
+	 - Data Access
+		 - ADO.NET
+		 - EF Core
+		 - Dapper
+		 - Redis
+		 - SQL Server Profiler
+ - Week 04
+	 - Performance
+		 - In Memory Caching
+		 - Distributed Caching
+		 - Response Caching
+		 - Output Caching
+		 - Rate Limiting
+		 - Response Compression
+		 - Browser's Network Tab
+ - Week 05
+	 - Security
+		 - Authentication In Depth
+			 - What is OIDC
+			 - What is JWT
+			 - Social Authentication
+			 - MFA
+		 - Authorization In Depth
+		 - XSRF/CSRF
+		 - XSS
+		 - CORS
+		 - SameSite Cookie
+		 - IP Safelist
+ - Week 06
+	 - Quality
+		 - Test
+			 - Unit Test
+			 - Integration Test
+			 - Test Coverage
+			 - Mocking
+		 - Technical Debt
+			 - SOLID
+			 - DRY
+			 - KISS
+			 - Code Analyzer
+ - Week 07
+	 - Deployment
+		 - Basics
+			 - What is Web Server
+			 - IIS
+			 - Kestrel
+		 - Advance
+			 - Docker Commands
+			 - Docker Image
+			 - Docker Container
+			 - Docker Compose
+			 - WSL
+			 - Kubernetes
+	 - CI/CD
+		 - Azure DevOps Pipelines
+		 - GitHub Actions
+ - Week 08
+	 - User Interface
+		 - HTML/CSS/JS Basics	
+		 - Angular Basics
+		 - React Basics
+		 - Blazor Basics
+ - Week 09
+	 - Practical 01
+		 - User Management System
+			 - Registration
+			 - Login
+			 - OTP & 2FA
+			 - Access Management
+			 - OIDC
+ - Week 10
+	 - Practical 02
+		 - Online Publication System
+			 - Integration with Practical 01
+			 - Draft
+			 - Submit Paper
+			 - Review Paper
+			 - Votting
+			 - Commentting
+			 - Like
+ - Week 11
+	 - Practical 03
+		 - Financial Management System
+			 - Integration with Practical 01 & 02
+			 - Bill Calculation based on publications
+			 - Budget Management
+			 - Accounting Management
+				 - Cash Payement
+				 - Staged Payement
+				 - Accounting Reports
+ - Week 12
+	 - Monitoring
+		 - Monitor Practical 01 & 02 & 03 applications
+		 - Health Check
+		 - Tracing
+		 - Logging

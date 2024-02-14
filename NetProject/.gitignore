@@ -1,0 +1,6 @@
+# Ignore user-specific files
+*.user
+
+# Ignore build output and temporary files
+bin/
+obj/

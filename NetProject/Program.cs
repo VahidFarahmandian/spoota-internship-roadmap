@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NetProject.Data;
 using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.AspNetCore.Hosting;
+using AutoMapper;
+using NetProject.profiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +30,8 @@ builder.Services.AddStackExchangeRedisCache(options =>
     options.Configuration = "localhost"; // Replace with your Redis server address
     options.InstanceName = "YourInstanceName"; // Optional: Add an instance name if needed
 });
+
+builder.Services.AddAutoMapper(typeof(Program), typeof(MappingProfile));
 
 
 builder.Services.AddControllers();

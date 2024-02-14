@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "qz6Ooa+Mxoy9LIROjK9KJULqx/jw7Y1q1ZtCQgjD/1uNMBe8KUhK3lC1b+zuYkTphwswhK3Avs7Jo78PpJ0S/Q==",
+  "dgSpecHash": "d0KtihyiUlcnuIIa8AT+d/4ZI7HhPmyzDTKuhvRncPIwMu1JxCIT0g50LbFf2BRfYDTM9fykf5K8E8vw+4rP+Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\ASUS2021\\source\\repos\\NetProject\\NetProject\\NetProject.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ASUS2021\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\ASUS2021\\.nuget\\packages\\dapper\\2.1.28\\dapper.2.1.28.nupkg.sha512",
     "C:\\Users\\ASUS2021\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\ASUS2021\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

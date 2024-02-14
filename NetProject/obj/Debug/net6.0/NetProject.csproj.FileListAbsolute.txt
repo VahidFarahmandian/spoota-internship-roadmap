@@ -153,3 +153,4 @@ C:\Users\ASUS2021\source\repos\NetProject\NetProject\bin\Debug\net6.0\Microsoft.
 C:\Users\ASUS2021\source\repos\NetProject\NetProject\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\ASUS2021\source\repos\NetProject\NetProject\bin\Debug\net6.0\Pipelines.Sockets.Unofficial.dll
 C:\Users\ASUS2021\source\repos\NetProject\NetProject\bin\Debug\net6.0\StackExchange.Redis.dll
+C:\Users\ASUS2021\source\repos\NetProject\NetProject\bin\Debug\net6.0\AutoMapper.dll

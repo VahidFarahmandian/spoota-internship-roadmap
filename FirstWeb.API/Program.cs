@@ -4,6 +4,7 @@ using FirstWeb.API.Repositories;
 using FirstWeb.API.Repositories.ADO.Net;
 using FirstWeb.API.Repositories.Dapper;
 using FirstWeb.API.Services;
+using FirstWeb.API.Services.In_Memory_Caching;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,7 +22,8 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 builder.Services.AddScoped<IProductRepositoryEFCore,SQLProductRepositoryEFCore>();
 builder.Services.AddScoped<IProductRepoitoryDapper, SQLProductRepositoryDapper>();
 builder.Services.AddScoped<IProductRepositoryADO, ProductRepositoryADO>();
-builder.Services.AddScoped<ICacheService, CacheService>();
+builder.Services.AddScoped<ICacheServiceDistributed, CacheServiceDistributed>();
+builder.Services.AddScoped<ICacheServiceInMemory, CacheServiceInMemory>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 

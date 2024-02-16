@@ -3,10 +3,10 @@ using System.Text.Json;
 
 namespace FirstWeb.API.Services
 {
-    public class CacheService : ICacheService
+    public class CacheServiceDistributed : ICacheServiceDistributed
     {
         private IDatabase _cacheDb;
-        public CacheService()
+        public CacheServiceDistributed()
         {
             var redis = ConnectionMultiplexer.Connect("127.0.0.1:6379,abortConnect=false");
             _cacheDb = redis.GetDatabase();

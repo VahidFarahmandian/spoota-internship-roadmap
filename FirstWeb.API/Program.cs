@@ -5,6 +5,7 @@ using FirstWeb.API.Repositories.ADO.Net;
 using FirstWeb.API.Repositories.Dapper;
 using FirstWeb.API.Services;
 using FirstWeb.API.Services.In_Memory_Caching;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,56 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Rate limiting fixed window
+builder.Services.AddRateLimiter(options =>
+{
+    options.AddFixedWindowLimiter("FixedWindowPolicy", opt =>
+    {
+        opt.Window = TimeSpan.FromSeconds(10);
+        opt.PermitLimit = 2;
+        opt.QueueLimit = 4;
+        opt.QueueProcessingOrder = System.Threading.RateLimiting.QueueProcessingOrder.OldestFirst;
+    }).RejectionStatusCode = 429; // Too many request
+});
+
+// Rate limiter sliding window
+builder.Services.AddRateLimiter(option =>
+{
+    option.AddSlidingWindowLimiter("SlidingWindowPolicy", opt =>
+    {
+        opt.Window = TimeSpan.FromSeconds(10);
+        opt.PermitLimit = 4;
+        opt.QueueLimit = 3;
+        opt.QueueProcessingOrder = System.Threading.RateLimiting.QueueProcessingOrder.OldestFirst;
+        opt.SegmentsPerWindow = 3;
+    }).RejectionStatusCode = 429;
+});
+
+// Rate limiter concurrency
+builder.Services.AddRateLimiter(option =>
+{
+    option.AddConcurrencyLimiter("ConcurrencyPolicy", opt =>
+    {
+        opt.PermitLimit = 1;
+        opt.QueueLimit = 10;
+        opt.QueueProcessingOrder = System.Threading.RateLimiting.QueueProcessingOrder.OldestFirst;
+    }).RejectionStatusCode = 429;
+});
+
+// Rate limiter token buket
+builder.Services.AddRateLimiter(options =>
+{
+    options.AddTokenBucketLimiter("TokenBucketPolicy", opt =>
+    {
+        opt.TokenLimit = 4;
+        opt.QueueLimit = 2;
+        opt.QueueProcessingOrder = System.Threading.RateLimiting.QueueProcessingOrder.OldestFirst;
+        opt.ReplenishmentPeriod = TimeSpan.FromSeconds(10);
+        opt.TokensPerPeriod = 4;
+        opt.AutoReplenishment = true;
+    }).RejectionStatusCode = 429;
+});
 
 // Response caching
 builder.Services.AddResponseCaching();
@@ -39,7 +90,7 @@ builder.Services.AddOutputCache(options =>
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
-builder.Services.AddScoped<IProductRepositoryEFCore,SQLProductRepositoryEFCore>();
+builder.Services.AddScoped<IProductRepositoryEFCore, SQLProductRepositoryEFCore>();
 builder.Services.AddScoped<IProductRepoitoryDapper, SQLProductRepositoryDapper>();
 builder.Services.AddScoped<IProductRepositoryADO, ProductRepositoryADO>();
 builder.Services.AddScoped<ICacheServiceDistributed, CacheServiceDistributed>();
@@ -61,6 +112,9 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+// Raet limit
+app.UseRateLimiter();
 
 // output cache
 app.UseOutputCache();

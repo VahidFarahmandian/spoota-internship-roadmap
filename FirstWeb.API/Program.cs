@@ -16,6 +16,23 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// output caching
+builder.Services.AddOutputCache(options =>
+{
+    options.AddBasePolicy(builder => builder.Expire(TimeSpan.FromMinutes(1)));
+    options.AddBasePolicy(builder =>
+    {
+        builder
+          .With(r => r.HttpContext.Request.Path.StartsWithSegments("/api/product/all"))
+          .Tag("tag-product")
+          .Expire(TimeSpan.FromMinutes(2));
+    });
+    options.AddPolicy("ExpireIn30s", builder => builder.Expire(TimeSpan.FromSeconds(30)));
+    options.AddPolicy("NoCache", builder => builder.NoCache());
+    options.AddPolicy("evict", builder => builder.Expire(TimeSpan.FromSeconds(90)));
+});
+
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
@@ -41,6 +58,9 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+// output cache
+app.UseOutputCache();
 
 app.MapControllers();
 

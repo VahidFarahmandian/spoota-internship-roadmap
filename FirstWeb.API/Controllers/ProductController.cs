@@ -8,6 +8,7 @@ using FirstWeb.API.Repositories.Dapper;
 using FirstWeb.API.Services;
 using FirstWeb.API.Services.In_Memory_Caching;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 
 namespace FirstWeb.API.Controllers
 {
@@ -39,15 +40,16 @@ namespace FirstWeb.API.Controllers
 
         [HttpGet()]
         [Route("all")]
+        [OutputCache(PolicyName = "ExpireIn30s")]
         public async Task<IActionResult> GetAll()
         {
-            // Check cache data In-Memory
+            // Check cache data In local Memory
             var cacheData = cacheServiceInMemory.getData<IEnumerable<Product>>("products");
 
             if (cacheData != null && cacheData.Count() > 0)
                 return Ok(cacheData);
 
-            // Set data to cache In-Memory
+            // Set data to cache In local Memory
             cacheData = await productRepositoryDapper.GetAllAsync();
 
             var expiryTime = DateTimeOffset.Now.AddMinutes(1);
@@ -64,6 +66,7 @@ namespace FirstWeb.API.Controllers
         [HttpGet]
         [Route("{id}")]
         [ValidateModel]
+        [OutputCache(PolicyName = "evict")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             // Check cache data exist
@@ -90,6 +93,7 @@ namespace FirstWeb.API.Controllers
         [HttpGet]
         [Route("name")]
         [ValidateModel]
+        [OutputCache(PolicyName = "evict", VaryByQueryKeys = new[] { "name" })]
         public IActionResult GetByName(string name)
         {
             // Check cache data
@@ -114,7 +118,7 @@ namespace FirstWeb.API.Controllers
 
         [HttpPost]
         [ValidateModel]
-        public async Task<IActionResult> Create([FromBody] AddProductRequestDto addProductRequestDto)
+        public async Task<IActionResult> Create([FromBody] AddProductRequestDto addProductRequestDto, IOutputCacheStore cache)
         {
             // Map DTO to Domain Model
             var productDomainModel = mapper.Map<Product>(addProductRequestDto);
@@ -128,6 +132,9 @@ namespace FirstWeb.API.Controllers
 
             // Map Domain Model to DTO
             var productDto = mapper.Map<ProductDto>(productDomainModel);
+
+            // Evict product by tag
+            await cache.EvictByTagAsync("tag-product", default);
 
             return CreatedAtAction(nameof(GetById), new { id = productDto.Id }, productDto);
 

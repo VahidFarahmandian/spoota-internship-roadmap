@@ -41,6 +41,7 @@ namespace FirstWeb.API.Controllers
         [HttpGet()]
         [Route("all")]
         [OutputCache(PolicyName = "ExpireIn30s")]
+        [ResponseCache(Duration =180,Location = ResponseCacheLocation.Any)]
         public async Task<IActionResult> GetAll()
         {
             // Check cache data In local Memory
@@ -67,6 +68,7 @@ namespace FirstWeb.API.Controllers
         [Route("{id}")]
         [ValidateModel]
         [OutputCache(PolicyName = "evict")]
+        [ResponseCache(Duration = 180,Location = ResponseCacheLocation.Client,NoStore = true)]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             // Check cache data exist
@@ -94,6 +96,7 @@ namespace FirstWeb.API.Controllers
         [Route("name")]
         [ValidateModel]
         [OutputCache(PolicyName = "evict", VaryByQueryKeys = new[] { "name" })]
+        [ResponseCache(Duration = 180,Location = ResponseCacheLocation.None,NoStore = true)]
         public IActionResult GetByName(string name)
         {
             // Check cache data

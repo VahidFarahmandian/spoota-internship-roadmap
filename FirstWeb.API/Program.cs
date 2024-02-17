@@ -16,6 +16,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Response caching
+builder.Services.AddResponseCaching();
+
 // output caching
 builder.Services.AddOutputCache(options =>
 {
@@ -61,6 +64,9 @@ app.UseAuthorization();
 
 // output cache
 app.UseOutputCache();
+
+// Response cache
+app.UseResponseCaching();
 
 app.MapControllers();
 

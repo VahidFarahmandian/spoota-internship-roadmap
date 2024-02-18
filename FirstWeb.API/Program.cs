@@ -6,6 +6,7 @@ using FirstWeb.API.Repositories.Dapper;
 using FirstWeb.API.Services;
 using FirstWeb.API.Services.In_Memory_Caching;
 using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -86,6 +87,24 @@ builder.Services.AddOutputCache(options =>
     options.AddPolicy("evict", builder => builder.Expire(TimeSpan.FromSeconds(90)));
 });
 
+// Response compression
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.Providers.Add<BrotliCompressionProvider>();
+    options.Providers.Add<GzipCompressionProvider>();
+});
+
+// configure response compression service
+builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
+{
+    options.Level = System.IO.Compression.CompressionLevel.Fastest;
+});
+
+builder.Services.Configure<GzipCompressionProviderOptions>(options =>
+{
+    options.Level = System.IO.Compression.CompressionLevel.SmallestSize;
+});
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
@@ -121,6 +140,9 @@ app.UseOutputCache();
 
 // Response cache
 app.UseResponseCaching();
+
+// Response compression
+app.UseResponseCompression();
 
 app.MapControllers();
 

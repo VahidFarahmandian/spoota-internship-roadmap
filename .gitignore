@@ -2,7 +2,8 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs
-/FirstWeb.API/bin/Debug/net7.0
-/FirstWeb.API/obj
-/FirstWeb.API/FirstWeb.API.csproj.user
+**/.vs
+**/bin/Debug/net7.0
+**/obj
+**/*.user
+**/bin/Debug/net8.0

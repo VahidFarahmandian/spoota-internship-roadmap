@@ -7,6 +7,7 @@ using FirstWeb.API.Repositories.ADO.Net;
 using FirstWeb.API.Repositories.Dapper;
 using FirstWeb.API.Services;
 using FirstWeb.API.Services.In_Memory_Caching;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.AspNetCore.RateLimiting;
@@ -40,7 +41,7 @@ namespace FirstWeb.API.Controllers
             this.mapper = _mapper;
         }
 
-        [HttpGet()]
+        [HttpGet(),Authorize(Roles ="User")]
         [Route("all")]
         [OutputCache(PolicyName = "ExpireIn30s")]
         [ResponseCache(Duration =180,Location = ResponseCacheLocation.Any)]

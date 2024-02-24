@@ -6,6 +6,8 @@ using FirstWeb.API.Repositories.ADO.Net;
 using FirstWeb.API.Repositories.Dapper;
 using FirstWeb.API.Services;
 using FirstWeb.API.Services.In_Memory_Caching;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.RateLimiting;
@@ -113,7 +115,7 @@ builder.Services.Configure<GzipCompressionProviderOptions>(options =>
 });
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")?? 
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") ??
 throw new InvalidOperationException("Connection string is not found")));
 
 // Add identity JWT authentication
@@ -162,6 +164,18 @@ builder.Services.AddScoped<ICacheServiceDistributed, CacheServiceDistributed>();
 builder.Services.AddScoped<ICacheServiceInMemory, CacheServiceInMemory>();
 builder.Services.AddScoped<IUserAccount, UserAccount>();
 
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+        });
+});
+
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
 var app = builder.Build();
@@ -192,5 +206,7 @@ app.UseResponseCaching();
 app.UseResponseCompression();
 
 app.MapControllers();
+
+app.UseCors("AllowAll");
 
 app.Run();

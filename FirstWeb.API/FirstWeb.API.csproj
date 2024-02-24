@@ -11,6 +11,8 @@
 		<PackageReference Include="AutoMapper" Version="13.0.1" />
 		<PackageReference Include="AutoMapper.Collection" Version="10.0.0" />
 		<PackageReference Include="Dapper" Version="2.1.28" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.2" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.2" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.2" />

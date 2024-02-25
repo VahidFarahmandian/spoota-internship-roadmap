@@ -1,3 +1,4 @@
+using FirstWeb.API.CustomMiddleware;
 using FirstWeb.API.Data;
 using FirstWeb.API.Mappings;
 using FirstWeb.API.Repositories;
@@ -19,7 +20,6 @@ using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -206,6 +206,9 @@ app.UseResponseCaching();
 app.UseResponseCompression();
 
 app.MapControllers();
+
+// IP Safelist middleware
+app.UseMiddleware<IPFilterMiddleware>();
 
 app.UseCors("AllowAll");
 

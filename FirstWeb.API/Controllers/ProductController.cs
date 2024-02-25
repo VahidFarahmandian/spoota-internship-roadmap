@@ -70,7 +70,7 @@ namespace FirstWeb.API.Controllers
             return Ok(mapper.Map<List<ProductDto>>(productsDomain));
         }
 
-        [HttpGet]
+        [HttpGet(),Authorize(Roles = "User")]
         [Route("{id}")]
         [ValidateModel]
         [OutputCache(PolicyName = "evict")]
@@ -127,7 +127,7 @@ namespace FirstWeb.API.Controllers
             return Ok(mapper.Map<ProductDto>(productDomain));
         }
 
-        [HttpPost]
+        [HttpPost(),Authorize(Roles = "Admin")]
         [ValidateModel]
         [EnableRateLimiting("TokenBucketPolicy")]
         public async Task<IActionResult> Create([FromBody] AddProductRequestDto addProductRequestDto, IOutputCacheStore cache)
@@ -152,7 +152,7 @@ namespace FirstWeb.API.Controllers
 
         }
 
-        [HttpPut]
+        [HttpPut(),Authorize(Roles = "Admin")]
         [Route("{id}")]
         [ValidateModel]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateProductRequestDto updateProductRequestDto)
@@ -173,7 +173,7 @@ namespace FirstWeb.API.Controllers
             return Ok(ProductDto);
         }
 
-        [HttpDelete]
+        [HttpDelete(),Authorize(Roles = "Admin")]
         [Route("{id}")]
         [ValidateModel]
         public async Task<IResult> Delete([FromRoute] int id)

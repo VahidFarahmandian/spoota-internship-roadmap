@@ -1,6 +1,6 @@
 # Ignore user-specific files
-*.user
+/**/.user
+/**/.vs
+/**/bin
+/**/obj
 
-# Ignore build output and temporary files
-bin/
-obj/

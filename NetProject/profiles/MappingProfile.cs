@@ -10,7 +10,9 @@ namespace NetProject.profiles
         public MappingProfile()
         {
             CreateMap<User, UserDto>().ReverseMap();
-            
+            CreateMap<Account, AccountDto>().ReverseMap();
+            CreateMap<RegisterUser, RegisterUserDto>().ReverseMap();
+
         }
     }
 }

@@ -1,0 +1,5 @@
+﻿@FirstWeb.API_HostAddress = http://localhost:5196
+
+GET {{FirstWeb.API_HostAddress}}/api/product/all
+
+###

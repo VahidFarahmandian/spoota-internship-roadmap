@@ -33,7 +33,7 @@ namespace FirstWeb.API.Repositories
 
         public async Task<List<Product>> GetAllAsync()
         {
-            return await dbContext.Products.ToListAsync();
+            return await dbContext.Products.AsNoTracking().ToListAsync();
         }
 
         public async Task<Product?> GetByIdAsync(int id)

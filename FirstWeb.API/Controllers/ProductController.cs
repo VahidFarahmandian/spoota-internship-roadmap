@@ -99,7 +99,7 @@ namespace FirstWeb.API.Controllers
 
         }
 
-        [HttpGet]
+        [HttpGet(),Authorize(Roles = "User")]
         [Route("name")]
         [ValidateModel]
         [OutputCache(PolicyName = "evict", VaryByQueryKeys = new[] { "name" })]

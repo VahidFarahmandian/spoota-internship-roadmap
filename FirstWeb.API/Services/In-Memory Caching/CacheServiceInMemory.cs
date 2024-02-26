@@ -16,7 +16,6 @@ namespace FirstWeb.API.Services.In_Memory_Caching
 
             catch (Exception ex)
             {
-
                 throw;
             }
         }

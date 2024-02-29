@@ -1,0 +1,6 @@
+# Ignore user-specific files
+/**/.user
+/**/.vs
+/**/bin
+/**/obj
+

@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/HosseinDinarvand/FirstWeb.API/obj
+/HosseinDinarvand/FirstWeb.API/FirstWeb.API.csproj.user
+/HosseinDinarvand/.vs/FirstWeb.API/FileContentIndex

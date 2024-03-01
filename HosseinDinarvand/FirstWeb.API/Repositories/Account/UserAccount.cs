@@ -1,4 +1,5 @@
-﻿using FirstWeb.API.Data;
+﻿using AutoMapper;
+using FirstWeb.API.Data;
 using FirstWeb.API.Model.DTO.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -14,26 +15,23 @@ namespace FirstWeb.API.Repositories.Account
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IConfiguration config;
+        private readonly IMapper mapper;
         public UserAccount(
             UserManager<ApplicationUser> _userManager,
             RoleManager<IdentityRole> _roleManager,
-            IConfiguration _config)
+            IConfiguration _config,
+            IMapper _mapper)
         {
             this.userManager = _userManager;
             this.roleManager = _roleManager;
             this.config = _config;
+            this.mapper = _mapper;
         }
         public async Task<GeneralResponse> CreateUserAccount(UserDTO userDTO)
         {
             if (userDTO is null) return new GeneralResponse(false, "Model is Empty");
 
-            var newUser = new ApplicationUser
-            {
-                Name = userDTO.Name,
-                Email = userDTO.Email,
-                PasswordHash = userDTO.Password,
-                UserName = userDTO.Email
-            };
+            var newUser = mapper.Map<ApplicationUser>(userDTO);
 
             var user = await userManager.FindByEmailAsync(newUser.Email);
             if (user is not null) return new GeneralResponse(false, "User registered already");
@@ -56,13 +54,7 @@ namespace FirstWeb.API.Repositories.Account
         {
             if (userDTO is null) return new GeneralResponse(false, "Model is Empty");
 
-            var newUser = new ApplicationUser
-            {
-                Name = userDTO.Name,
-                Email = userDTO.Email,
-                PasswordHash = userDTO.Password,
-                UserName = userDTO.Email
-            };
+            var newUser = mapper.Map<ApplicationUser>(userDTO);
 
             var user = await userManager.FindByEmailAsync(newUser.Email);
             if (user is not null) return new GeneralResponse(false, "User registered already");

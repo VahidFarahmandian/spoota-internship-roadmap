@@ -33,7 +33,7 @@ namespace FirstWeb.API.Repositories
 
         public async Task<List<Product>> GetAllAsync()
         {
-            return await dbContext.Products.ToListAsync();
+            return await dbContext.Products.AsNoTracking().ToListAsync();
         }
 
         public async Task<Product?> GetByIdAsync(int id)
@@ -49,7 +49,6 @@ namespace FirstWeb.API.Repositories
                 return null;
 
             await dbContext.Database.ExecuteSqlRawAsync($"UpdateProduct {id},{product.Name},{product.Category},{product.Price}");
-
             await dbContext.SaveChangesAsync();
             return existInProducts;
         }

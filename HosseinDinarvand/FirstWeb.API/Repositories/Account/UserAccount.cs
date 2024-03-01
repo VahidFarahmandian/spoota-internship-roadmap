@@ -8,6 +8,7 @@ using System.Security.Claims;
 using System.Text;
 using static FirstWeb.API.Model.DTO.Response.Responses;
 
+
 namespace FirstWeb.API.Repositories.Account
 {
     public class UserAccount : IUserAccount
@@ -31,8 +32,8 @@ namespace FirstWeb.API.Repositories.Account
         {
             if (userDTO is null) return new GeneralResponse(false, "Model is Empty");
 
-            var newUser = mapper.Map<ApplicationUser>(userDTO);
 
+            var newUser = mapper.Map<ApplicationUser>(userDTO);
             var user = await userManager.FindByEmailAsync(newUser.Email);
             if (user is not null) return new GeneralResponse(false, "User registered already");
 
@@ -55,7 +56,6 @@ namespace FirstWeb.API.Repositories.Account
             if (userDTO is null) return new GeneralResponse(false, "Model is Empty");
 
             var newUser = mapper.Map<ApplicationUser>(userDTO);
-
             var user = await userManager.FindByEmailAsync(newUser.Email);
             if (user is not null) return new GeneralResponse(false, "User registered already");
 

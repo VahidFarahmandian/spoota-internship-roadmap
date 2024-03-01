@@ -187,7 +187,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseHsts();
+
 app.UseHttpsRedirection();
+
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseCors("AllowAll");
 
 app.UseAuthentication();
 
@@ -209,7 +217,5 @@ app.MapControllers();
 
 // IP Safelist middleware
 app.UseMiddleware<IPFilterMiddleware>();
-
-app.UseCors("AllowAll");
 
 app.Run();

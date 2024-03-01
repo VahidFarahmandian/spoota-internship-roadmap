@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-
 #nullable disable
 
 namespace FirstWeb.API.Migrations

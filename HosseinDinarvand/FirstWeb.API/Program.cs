@@ -7,8 +7,6 @@ using FirstWeb.API.Repositories.ADO.Net;
 using FirstWeb.API.Repositories.Dapper;
 using FirstWeb.API.Services;
 using FirstWeb.API.Services.In_Memory_Caching;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.RateLimiting;

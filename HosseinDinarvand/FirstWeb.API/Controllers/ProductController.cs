@@ -29,6 +29,14 @@ namespace FirstWeb.API.Controllers
         private readonly IMapper mapper;
         public ProductController(
             IProductRepositoryEFCore _productRepositoryEFCore,
+            IMapper _mapper
+            )
+        {
+            this.productRepositoryEFCore = _productRepositoryEFCore;
+            this.mapper = _mapper;
+        }
+        public ProductController(
+            IProductRepositoryEFCore _productRepositoryEFCore,
             IProductRepoitoryDapper _productRepositoryDapper,
             ICacheServiceDistributed _cacheService,
             ICacheServiceInMemory _cacheServiceInMemory,
@@ -130,7 +138,7 @@ namespace FirstWeb.API.Controllers
         [HttpPost(),Authorize(Roles = "Admin")]
         [ValidateModel]
         [EnableRateLimiting("TokenBucketPolicy")]
-        public async Task<IActionResult> Create([FromBody] AddProductRequestDto addProductRequestDto, IOutputCacheStore cache)
+        public async Task<IActionResult> Create([FromBody] AddProductRequestDto addProductRequestDto/*, IOutputCacheStore cache*/)
         {
             // Map DTO to Domain Model
             var productDomainModel = mapper.Map<Product>(addProductRequestDto);
@@ -146,7 +154,7 @@ namespace FirstWeb.API.Controllers
             var productDto = mapper.Map<ProductDto>(productDomainModel);
 
             // Evict product by tag
-            await cache.EvictByTagAsync("tag-product", default);
+            //await cache.EvictByTagAsync("tag-product", default);
 
             return CreatedAtAction(nameof(GetById), new { id = productDto.Id }, productDto);
 

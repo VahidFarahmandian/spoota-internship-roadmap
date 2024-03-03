@@ -1,0 +1,6 @@
+﻿CREATE PROCEDURE GetProductById
+	@Id INT
+AS
+BEGIN
+	SELECT * FROM Products WHERE Id = @Id
+END

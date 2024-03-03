@@ -27,11 +27,15 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.3.1" />
-		<PackageReference Include="StackExchange.Redis" Version="2.7.23" />
+		<PackageReference Include="StackExchange.Redis" Version="2.7.20" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="8.0.1" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.3.1" />
 		<PackageReference Include="System.Runtime.Caching" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="SQLQuery\" />
 	</ItemGroup>
 
 </Project>

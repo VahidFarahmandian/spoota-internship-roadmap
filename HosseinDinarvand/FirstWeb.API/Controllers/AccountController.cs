@@ -1,4 +1,4 @@
-﻿using FirstWeb.API.Model.DTO;
+﻿using FirstWeb.API.Model.DTO.User;
 using FirstWeb.API.Repositories.Account;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

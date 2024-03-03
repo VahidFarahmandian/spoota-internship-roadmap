@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FirstWeb.API.Model.DTO
+namespace FirstWeb.API.Model.DTO.User
 {
     public class UserDTO
     {

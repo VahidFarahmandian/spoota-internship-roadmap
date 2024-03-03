@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using FirstWeb.API.CustomActionFilters;
 using FirstWeb.API.Model.Domain;
-using FirstWeb.API.Model.DTO;
+using FirstWeb.API.Model.DTO.Product;
 using FirstWeb.API.Repositories;
 using FirstWeb.API.Repositories.ADO.Net;
 using FirstWeb.API.Repositories.Dapper;
@@ -27,6 +27,14 @@ namespace FirstWeb.API.Controllers
         private readonly ICacheServiceDistributed cacheService;
         private readonly ICacheServiceInMemory cacheServiceInMemory;
         private readonly IMapper mapper;
+        public ProductController(
+            IProductRepositoryEFCore _productRepositoryEFCore,
+            IMapper _mapper
+            )
+        {
+            this.productRepositoryEFCore = _productRepositoryEFCore;
+            this.mapper = _mapper;
+        }
         public ProductController(
             IProductRepositoryEFCore _productRepositoryEFCore,
             IProductRepoitoryDapper _productRepositoryDapper,
@@ -130,7 +138,7 @@ namespace FirstWeb.API.Controllers
         [HttpPost(),Authorize(Roles = "Admin")]
         [ValidateModel]
         [EnableRateLimiting("TokenBucketPolicy")]
-        public async Task<IActionResult> Create([FromBody] AddProductRequestDto addProductRequestDto, IOutputCacheStore cache)
+        public async Task<IActionResult> Create([FromBody] AddProductRequestDto addProductRequestDto/*, IOutputCacheStore cache*/)
         {
             // Map DTO to Domain Model
             var productDomainModel = mapper.Map<Product>(addProductRequestDto);
@@ -146,7 +154,7 @@ namespace FirstWeb.API.Controllers
             var productDto = mapper.Map<ProductDto>(productDomainModel);
 
             // Evict product by tag
-            await cache.EvictByTagAsync("tag-product", default);
+            //await cache.EvictByTagAsync("tag-product", default);
 
             return CreatedAtAction(nameof(GetById), new { id = productDto.Id }, productDto);
 

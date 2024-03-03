@@ -1,5 +1,5 @@
-﻿using FirstWeb.API.Model.DTO;
-using static FirstWeb.API.Model.DTO.Responses;
+﻿using FirstWeb.API.Model.DTO.User;
+using static FirstWeb.API.Model.DTO.Response.Responses;
 
 namespace FirstWeb.API.Repositories.Account
 {

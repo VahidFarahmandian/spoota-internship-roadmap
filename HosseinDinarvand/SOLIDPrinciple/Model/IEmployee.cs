@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace SOLIDPrinciple.Model
 {
-    public class Employee : IEmployee
+    public interface IEmployee
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public decimal Salary { get; set; }
+        int Id { get; set; }
+        string Name { get;set; }
+        decimal Salary { get; set; }
     }
 }

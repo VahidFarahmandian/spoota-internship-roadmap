@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstWeb.API", "FirstWeb.AP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstWebAPI.Tests", "FirstWebAPI.Tests\FirstWebAPI.Tests.csproj", "{461507AF-08F6-4F91-8F50-8114A2CBF51A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOLIDPrinciple", "SOLIDPrinciple\SOLIDPrinciple.csproj", "{476B5FD7-3E7D-41F6-A638-86F5E178F3A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{461507AF-08F6-4F91-8F50-8114A2CBF51A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{461507AF-08F6-4F91-8F50-8114A2CBF51A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{461507AF-08F6-4F91-8F50-8114A2CBF51A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{476B5FD7-3E7D-41F6-A638-86F5E178F3A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{476B5FD7-3E7D-41F6-A638-86F5E178F3A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{476B5FD7-3E7D-41F6-A638-86F5E178F3A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{476B5FD7-3E7D-41F6-A638-86F5E178F3A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

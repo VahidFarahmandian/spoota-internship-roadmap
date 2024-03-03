@@ -2,7 +2,7 @@
 
 namespace SOLIDPrinciple.Manager
 {
-    public class EmployeeManager
+    public class EmployeeManager : IEmployyManager
     {
         private List<Model.Employee> employees = new List<Model.Employee>();
 

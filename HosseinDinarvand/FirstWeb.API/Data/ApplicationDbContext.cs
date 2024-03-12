@@ -13,6 +13,7 @@ namespace FirstWeb.API.Data
         }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

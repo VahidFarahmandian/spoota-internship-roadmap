@@ -76,16 +76,9 @@ jobs:
 
     - run: |
          echo "Run, Build Application using script"
-         $baseDir = (Get-Item -Path ".\" -Verbose).FullName
-         Write-Host ("Scanning *.sln files in " + $baseDir)
-         $solutionPaths = Get-ChildItem -Path $baseDir -Include *.sln -Recurse
-         Write-Host ("Total found: " + $solutionPaths.Count)
-         foreach ($solutionPath in $solutionPaths) {  
-             Write-Host ("Building => " + $solutionPath)
-             dotnet build $solutionPath
-         }
-         #dotnet build HosseinDinarvand/FirstWeb.API.sln
-         #dotnet build MahshadChabok/NetProject.sln
+         for f in $(find ./* -name '*.sln'); do dotnet build $f; done
+         #dotnet build HosseinDinarvand/**/*.sln
+         #dotnet build MahshadChabok/**/*.sln
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3

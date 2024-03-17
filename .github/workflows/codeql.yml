@@ -76,8 +76,9 @@ jobs:
 
     - run: |
          echo "Run, Build Application using script"
-         dotnet build HosseinDinarvand/FirstWeb.API.sln
-         dotnet build MahshadChabok/NetProject.sln
+         dotnet build **/*.sln
+         #dotnet build HosseinDinarvand/FirstWeb.API.sln
+         #dotnet build MahshadChabok/NetProject.sln
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3

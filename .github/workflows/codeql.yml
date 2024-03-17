@@ -76,7 +76,14 @@ jobs:
 
     - run: |
          echo "Run, Build Application using script"
-         dotnet build **/*.sln
+         $baseDir = (Get-Item -Path ".\" -Verbose).FullName
+         Write-Host ("Scanning *.sln files in " + $baseDir)
+         $solutionPaths = Get-ChildItem -Path $baseDir -Include *.sln -Recurse
+         Write-Host ("Total found: " + $solutionPaths.Count)
+         foreach ($solutionPath in $solutionPaths) {  
+             Write-Host ("Building => " + $solutionPath)
+             dotnet build $solutionPath
+         }
          #dotnet build HosseinDinarvand/FirstWeb.API.sln
          #dotnet build MahshadChabok/NetProject.sln
 

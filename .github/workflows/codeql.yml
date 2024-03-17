@@ -76,7 +76,10 @@ jobs:
 
     - run: |
          echo "Run, Build Application using script"
-         for f in $(find ./* -name '*.sln'); do dotnet build $f; done
+         for f in $(find ./* -name '*.sln'); do 
+           echo "Building ${f} ..."
+           dotnet build $f; 
+         done
          #dotnet build HosseinDinarvand/**/*.sln
          #dotnet build MahshadChabok/**/*.sln
 

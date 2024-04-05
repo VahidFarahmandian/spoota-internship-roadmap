@@ -7,16 +7,20 @@ namespace SOLIDPrinciple.Manager
     public class EmployeeManager : IEmployyManager, IEmployee
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         public decimal Salary { get; set; }
 
         private List<Model.Employee> employees = new List<Model.Employee>();
         private readonly IEmployeeRepository employeeRepository;
 
-        public EmployeeManager(IEmployeeRepository _employeeRepository)
+        public EmployeeManager() { }
+
+        public EmployeeManager(IEmployeeRepository repository)
         {
-            this.employeeRepository = _employeeRepository;
+            this.employeeRepository = repository;
         }
+
+
 
 
         public void AddEmployee(Model.Employee employee)

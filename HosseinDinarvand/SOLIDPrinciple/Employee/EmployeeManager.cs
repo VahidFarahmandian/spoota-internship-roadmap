@@ -21,8 +21,6 @@ namespace SOLIDPrinciple.Manager
         }
 
 
-
-
         public void AddEmployee(Model.Employee employee)
         {
             employeeRepository.AddEmployee(employee);

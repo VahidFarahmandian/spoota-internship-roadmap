@@ -1,6 +1,7 @@
 ﻿using SOLIDPrinciple.Employee;
 using SOLIDPrinciple.Manager;
 using SOLIDPrinciple.Model;
+using SOLIDPrinciple.Repository;
 
 class Program 
 {

@@ -1,0 +1,90 @@
+/* Profile.module.css */
+.profile_right {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 1000px;
+    background-repeat: no-repeat;
+    margin-left: 301px;
+    background-size: 81% 76%;
+
+}
+.profile_h_position{
+    left : 100px
+
+}
+.profile_right_font{
+    color: #2062b9;
+    font-family: 'Pacifico', cursive;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    margin-top: -120px;
+    margin-left: -110px;
+    width: 100%;
+
+
+}
+
+.profile_formContainer {
+    max-width: 400px;
+    margin-top: 9%;
+    margin-left: 32%;
+}
+
+.profile_input {
+    width: 60%;
+    height: 20px;
+    top :80px;
+    background: #e0dede;
+    justify-content: center;
+    display: flex;
+    margin-left: -100px;
+    margin-top: 10%;
+    margin-bottom: 20px;
+    padding: 10px;
+    outline: none;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #2062b9
+}
+.profile_button{
+    width: 60%;
+    height: 50px;
+    margin-left: -85px;
+    margin-top: 50px;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: #2062b9;
+    font-size: 1em;
+    font-weight: bold;
+    outline: none;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #fff;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+}
+.profile_button:hover{
+
+   background-color: #555; /* Change the button background color on hover */
+    border-style: solid;
+    border-color: #fff;
+
+}
+.h1_tag{
+    position: absolute;
+    top: 0;
+    left: 55%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #2062b9;
+    font-family: 'Pacifico', cursive;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}

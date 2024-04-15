@@ -1,0 +1,64 @@
+.first_panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.first_panel a{
+    text-decoration: none;
+    font-size: 50px;
+}
+.first_panel h1{
+    font-size: 50px;
+    margin-left:100px ;
+    color: #1b1b1c;
+}
+.mybutton4{
+    width: 20%;
+    height: 40px;
+    margin: 10px;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: #fa0505;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 5px;
+    outline: none;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #fff;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+}
+
+    .container1 {
+      flex-direction: column;
+      margin-left: 370px;
+      margin-right: 200px;
+      margin-top: 130px;
+    }
+    .row1 {
+      flex-direction: column;
+    }
+  
+
+    .container2 {
+        display: flex;
+        overflow-y: auto;
+        margin-left: 440px;
+        margin-right: 140px;
+        margin-top: 150px;
+        /* z-index: 100; */
+      }
+      
+      .row2 {
+        /* z-index: 100; */
+        display: flex;
+        gap: 30px; 
+      }
+  
+
+
+
